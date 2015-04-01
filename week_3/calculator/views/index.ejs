@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Calculator App</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    
+    <form action="/add" method="POST">
+        <input type="text" name="firstNumber" placeholder="First Number">
+        +
+        <input type="text" name="secondNumber" placeholder="Second Number">
+        <input type="submit" value="Add">
+    </form>
+
+    <form action="/subtract" method="POST">
+        <input type="text" name="firstNumber" placeholder="First Number">
+        -
+        <input type="text" name="secondNumber" placeholder="Second Number">
+        <input type="submit" value="Subtract">
+    </form>
+
+    <form action="/multiply" method="POST">
+        <input type="text" name="firstNumber" placeholder="First Number">
+        x
+        <input type="text" name="secondNumber" placeholder="Second Number">
+        <input type="submit" value="Multiply">
+    </form>
+
+    <form action="/divide" method="POST">
+        <input type="text" name="firstNumber" placeholder="First Number">
+        &divide;
+        <input type="text" name="secondNumber" placeholder="Second Number">
+        <input type="submit" value="Divide">
+    </form>
+
+</body>
+</html>
