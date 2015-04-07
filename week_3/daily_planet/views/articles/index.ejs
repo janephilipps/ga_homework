@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Daily Planet</title>
+		
+	</head>
+	<body>
+		<p>Articles</p>
+
+		<% for (var i = 0; i < articlesList.length; i++) { %>
+		<div>
+		<a href="/articles/<%= articlesList[i].id%>"><%= articlesList[i].title %></a>
+		<br>
+		<%= articlesList[i].author %>
+		<br>
+		<%= articlesList[i].content %>
+		</div>
+		<% } %>
+		
+	</body>
+
+</html>
