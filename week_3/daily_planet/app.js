@@ -26,11 +26,11 @@ app.get('/articles/new', function(req,res) {
 app.post('/articles', function(req,res) {
 	console.log(req.body);
 	var title = req.body.title;
-	var author = req.body.author;
 	var content = req.body.content;
 	var fiction = req.body.fiction;
+  var authorId = req.body.AuthorId
 
-	db.Article.create({title: title, author: author, content: content, fiction: fiction})
+	db.Article.create({title: title, AuthorId: authorId, content: content, fiction: fiction})
   .then( function(article) {
 		res.redirect('/articles/');
 	})
@@ -39,7 +39,7 @@ app.post('/articles', function(req,res) {
 
 app.get('/articles/:id', function(req, res) {
   console.log(req.body);
-  db.Article.find({where: {id: req.params.id}})
+  db.Article.find({include: [db.Author]}, {where: {id: req.params.id}})
   .then(function (articles) {
   	res.render("articles/article", {article: articles});
   });
@@ -50,23 +50,36 @@ app.get('/articles/:id/edit', function(req, res) {
 });
 
 app.get('/authors', function(req, res) {
-
+  db.Author.findAll().then(function (authors) {
+    res.render("authors/index", {authorsList: authors});
+  });
 });
 
 app.get('/authors/new', function(req, res) {
-
+  res.render('authors/new');
 });
 
 app.post('/authors', function(req, res) {
+  console.log(req.body);
+  var firstName = req.body.first_name;
+  var lastName = req.body.last_name;
 
+  db.Author.create({first_name: firstName, last_name: lastName})
+  .then( function(author) {
+    res.redirect('/authors/');
+  })
 });
 
 app.get('/authors/:id', function(req, res) {
-
+  console.log(req.body);
+  db.Author.find({where: {id: req.params.id}})
+  .then(function (authors) {
+    res.render("authors/author", {author: authors});
+  });
 });
 
 app.get('/', function(req,res) {
-  res.render('site/index.ejs');
+  res.render('site/index');
 });
 
 app.get('/about', function(req,res) {

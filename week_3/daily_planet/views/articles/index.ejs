@@ -11,7 +11,7 @@
 		<div>
 		<a href="/articles/<%= articlesList[i].id%>"><%= articlesList[i].title %></a>
 		<br>
-		<%= articlesList[i].author %>
+		<%= articlesList[i].Author.first_name + " " + articlesList[i].Author.last_name %>
 		<br>
 		<%= articlesList[i].content %>
 		</div>
