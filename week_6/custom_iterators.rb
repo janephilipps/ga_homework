@@ -28,8 +28,10 @@ def map(arr)
   
   # Call each iterator within map to iterate through array
   each(arr) do |x|
-    # Push result from yield/callback (below) into result array
+    # Push result from yield/callback (below) into result array *with syntactic sugar*
     result << yield(x)
+    # Push result from yield/callback (below) into result array
+    result.push(yield(x))
   end
   
   # Implicitly return result array
@@ -53,8 +55,10 @@ def filter(arr)
     each(arr) do |x|
         # If yield is true (if x is even - from filter callback below) 
         if yield(x)
-            # push x into result array
+            # push x into result array *with syntactic sugar*
             result << x
+            # push x into result array
+            result.push(x)
         end
     end
     # Implicitly return result array
